@@ -1,0 +1,9 @@
+{
+  "name": "DOKK OS",
+  "short_name": "DOKK OS",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#030404",
+  "theme_color": "#050606",
+  "start_url": "./"
+}

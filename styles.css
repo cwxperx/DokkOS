@@ -1,0 +1,330 @@
+:root {
+  --black: #020303;
+  --ink: #f2f5f1;
+  --panel: #2f4749;
+  --panel-deep: #283d3f;
+  --bar: #303030;
+  --gold: #eda000;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--black);
+  color: var(--ink);
+  font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+}
+
+.app-shell {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(185px, 18.9vw, 340px);
+  min-height: 100dvh;
+  background: #000;
+}
+
+.screen-panel {
+  min-width: 0;
+  background: #000;
+}
+
+.status-bar {
+  height: clamp(54px, 9.45vh, 102px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: max(10px, env(safe-area-inset-top)) clamp(26px, 6vw, 116px) 8px;
+  background: #020202;
+  color: #f8f8f8;
+  font-size: clamp(20px, 3.55vw, 40px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.status-left,
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.7vw, 24px);
+}
+
+.bars {
+  letter-spacing: 2px;
+}
+
+.filter-bar {
+  height: clamp(48px, 9.25vh, 100px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 0 clamp(22px, 5.5vw, 116px);
+  background: var(--bar);
+  color: #ececec;
+  font-size: clamp(18px, 3.25vw, 42px);
+  white-space: nowrap;
+}
+
+.filter-bar span {
+  text-align: center;
+}
+
+.pattern-field {
+  height: calc(100dvh - clamp(54px, 9.45vh, 102px) - clamp(48px, 9.25vh, 100px));
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.18)),
+    url("assets/pattern-field.png") center / cover;
+}
+
+.control-panel {
+  position: relative;
+  min-width: 0;
+  min-height: 100dvh;
+  padding: max(14px, env(safe-area-inset-top)) clamp(12px, 1.5vw, 28px) max(16px, env(safe-area-inset-bottom));
+  overflow: hidden;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(150deg, transparent 0 12%, rgba(210, 179, 28, 0.98) 12.5% 20%, transparent 20.5% 100%),
+    linear-gradient(151deg, transparent 0 52%, rgba(210, 179, 28, 0.92) 52.5% 60%, transparent 60.5% 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12)),
+    var(--panel-deep);
+}
+
+.debug-readout {
+  position: absolute;
+  top: 19px;
+  left: 9px;
+  right: 8px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  color: rgba(236, 239, 231, 0.58);
+  font: 11px/1.1 Consolas, monospace;
+}
+
+.brand-block,
+.divider,
+.tool-card {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-block {
+  min-height: clamp(186px, 27vh, 300px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: clamp(20px, 3vh, 34px);
+}
+
+.logo-art {
+  display: block;
+  width: min(82%, 190px);
+  height: auto;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.28));
+  user-select: none;
+  pointer-events: none;
+}
+
+.brand-block h1 {
+  margin: 14px 0 0;
+  color: var(--gold);
+  font-size: clamp(27px, 3.2vw, 46px);
+  line-height: 0.92;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.brand-block p {
+  margin: 5px 0 0;
+  color: #dce1dd;
+  font-size: clamp(14px, 1.55vw, 22px);
+  line-height: 1;
+}
+
+.divider {
+  width: 100%;
+  height: 3px;
+  margin: 0 0 clamp(13px, 1.9vh, 20px);
+  background: rgba(226, 235, 228, 0.35);
+}
+
+.tool-card {
+  display: block;
+  width: 100%;
+  height: clamp(134px, 15.5vh, 184px);
+  margin-bottom: clamp(14px, 1.9vh, 20px);
+  overflow: hidden;
+  cursor: default;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.14));
+}
+
+.tool-card.inactive {
+  opacity: 0.98;
+}
+
+.hack-card {
+  height: clamp(235px, 30vh, 360px);
+  cursor: pointer;
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.hack-card:active {
+  transform: scale(0.985);
+  filter: brightness(1.12) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.14));
+}
+
+.button-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
+
+.video-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: none;
+  place-items: center;
+  background: #000;
+}
+
+.video-stage.active {
+  display: grid;
+}
+
+.video-stage video {
+  width: min(100vw, calc(100dvh * 9 / 16));
+  height: min(100dvh, calc(100vw * 16 / 9));
+  object-fit: cover;
+  background: #000;
+}
+
+.exit-hotspot {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 11;
+  width: max(82px, env(safe-area-inset-right));
+  height: max(82px, calc(env(safe-area-inset-top) + 70px));
+  cursor: pointer;
+}
+
+.rotate-notice {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  place-items: center;
+  background: #050606;
+  color: var(--gold);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.rotate-notice span {
+  padding: 14px 18px;
+  border: 3px solid var(--gold);
+  border-radius: 8px;
+}
+
+@media (max-width: 950px) {
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr) clamp(146px, 18vw, 172px);
+  }
+
+  .status-bar {
+    height: 52px;
+    padding: max(8px, env(safe-area-inset-top)) 32px 6px;
+    font-size: clamp(18px, 3vw, 25px);
+  }
+
+  .status-left,
+  .status-right {
+    gap: 9px;
+  }
+
+  .filter-bar {
+    height: 50px;
+    padding: 0 28px;
+    font-size: clamp(17px, 2.7vw, 23px);
+  }
+
+  .pattern-field {
+    height: calc(100dvh - 102px);
+    background-size: cover;
+  }
+
+  .control-panel {
+    padding: max(7px, env(safe-area-inset-top)) 9px max(8px, env(safe-area-inset-bottom));
+  }
+
+  .debug-readout {
+    top: 5px;
+    left: 4px;
+    right: 4px;
+    font-size: 8px;
+  }
+
+  .brand-block {
+    min-height: 86px;
+    padding-top: 8px;
+  }
+
+  .logo-art {
+    width: min(74%, 100px);
+  }
+
+  .brand-block h1 {
+    margin-top: 4px;
+    font-size: 18px;
+  }
+
+  .brand-block p {
+    margin-top: 1px;
+    font-size: 10px;
+  }
+
+  .divider {
+    height: 2px;
+    margin-bottom: 7px;
+  }
+
+  .tool-card {
+    height: 60px;
+    margin-bottom: 7px;
+  }
+
+  .hack-card {
+    height: calc(100dvh - 265px);
+  }
+}
+
+@media (orientation: portrait) and (max-width: 950px) {
+  .rotate-notice {
+    display: grid;
+  }
+}
