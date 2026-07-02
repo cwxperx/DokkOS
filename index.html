@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#050606" />
+    <title>DOKK OS</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="loading-screen">
+        <div class="loading-card">
+          <img class="loading-art" src="assets/loading.webp" alt="" />
+          <p class="rotate-hint">ROTATE DEVICE</p>
+        </div>
+      </section>
+
+      <section class="console-screen" aria-label="DOKK OS console">
+        <img class="main-reference" src="assets/main-reference.png" alt="" />
+
+        <section class="target-panel" aria-label="Fake IP target list">
+          <div class="panel-title"><span>ACCESS NODES</span><strong id="selectedCount" aria-live="polite"></strong></div>
+          <div class="target-list" id="targetList">
+            <button class="target-row" type="button" data-target="0"><span class="target-check"></span><span class="target-code">???</span><span class="target-ip">10.34.88.127</span><span class="target-source">FOMA</span><span class="target-state">locked</span></button>
+            <button class="target-row" type="button" data-target="1"><span class="target-check"></span><span class="target-code">???</span><span class="target-ip">172.16.04.091</span><span class="target-source">FOMA</span><span class="target-state">locked</span></button>
+            <button class="target-row" type="button" data-target="2"><span class="target-check"></span><span class="target-code">???</span><span class="target-ip">192.168.77.018</span><span class="target-source">FOMA</span><span class="target-state">locked</span></button>
+            <button class="target-row" type="button" data-target="3"><span class="target-check"></span><span class="target-code">???</span><span class="target-ip">45.09.213.066</span><span class="target-source">FOMA</span><span class="target-state">locked</span></button>
+            <button class="target-row" type="button" data-target="4"><span class="target-check"></span><span class="target-code">???</span><span class="target-ip">88.121.06.204</span><span class="target-source">FOMA</span><span class="target-state">locked</span></button>
+          </div>
+        </section>
+
+        <aside class="action-scroll" aria-label="Action buttons">
+          <div class="scroll-spacer top"></div>
+          <button class="action-card status-card" type="button" aria-label="Searching"></button>
+          <button class="action-card status-card second" type="button" aria-label="Available"></button>
+          <button class="action-card call-card" id="callButton" type="button" disabled aria-label="Run call video">
+            <img src="assets/call-button.png" alt="" />
+          </button>
+          <div class="scroll-spacer bottom"></div>
+        </aside>
+      </section>
+
+      <section class="call-screen" id="callScreen" aria-label="Fake call video" hidden>
+        <button class="close-call" id="closeCall" type="button" aria-label="Close video">x</button>
+        <video id="callVideo" class="call-video" src="assets/call-video.mp4" playsinline loop></video>
+        <div class="video-fallback" id="videoFallback"><strong>CALL VIDEO MISSING</strong><span>Add your portrait video as assets/call-video.mp4</span></div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+

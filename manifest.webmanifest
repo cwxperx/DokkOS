@@ -1,0 +1,9 @@
+﻿{
+  "name": "DOKK OS Logic Bomb",
+  "short_name": "DOKK OS",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#050606",
+  "theme_color": "#050606",
+  "start_url": "./index.html"
+}
